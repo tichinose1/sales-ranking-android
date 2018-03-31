@@ -6,6 +6,7 @@ import android.os.Looper
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.View
 import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import kotlinx.android.synthetic.main.activity_main.*
@@ -36,6 +37,8 @@ class MainActivity : AppCompatActivity() {
                                 .fromJson(responseJson)
 
                         Handler(Looper.getMainLooper()).post {
+                            progressBar.visibility = View.GONE
+
                             recyclerView.adapter = MainAdapter(item!!.feed.results)
                         }
                     }
