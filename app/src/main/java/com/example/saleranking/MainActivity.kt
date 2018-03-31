@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import com.squareup.moshi.KotlinJsonAdapterFactory
+import com.squareup.moshi.Moshi
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 import java.io.IOException
@@ -22,7 +24,14 @@ class MainActivity : AppCompatActivity() {
                 .newCall(request)
                 .enqueue(object : Callback {
                     override fun onResponse(call: Call?, response: Response?) {
-                        Log.d("test", response?.body()?.string())
+                        val responseJson = response?.body()?.string() ?: return
+                        Log.d("responseJson:", responseJson)
+
+                        val item = Moshi.Builder()
+                                .add(KotlinJsonAdapterFactory())
+                                .build()
+                                .adapter(Item::class.java)
+                                .fromJson(responseJson)
                     }
 
                     override fun onFailure(call: Call?, e: IOException?) {
