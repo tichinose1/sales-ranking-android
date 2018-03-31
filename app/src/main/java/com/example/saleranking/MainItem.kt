@@ -1,6 +1,6 @@
 package com.example.saleranking
 
-data class Item(val reed: Feed)
+data class Item(val feed: Feed)
 
 data class Feed(val results: Array<Result>)
 
