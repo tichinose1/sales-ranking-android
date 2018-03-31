@@ -11,7 +11,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val results = arrayOf(
+                Result("ツムツム", ""),
+                Result("ポケモンGO","")
+        )
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = MainAdapter()
+        recyclerView.adapter = MainAdapter(results)
     }
 }
