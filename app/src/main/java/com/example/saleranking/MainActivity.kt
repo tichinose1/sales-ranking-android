@@ -1,6 +1,8 @@
 package com.example.saleranking
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -32,6 +34,10 @@ class MainActivity : AppCompatActivity() {
                                 .build()
                                 .adapter(Item::class.java)
                                 .fromJson(responseJson)
+
+                        Handler(Looper.getMainLooper()).post {
+                            recyclerView.adapter = MainAdapter(item!!.feed.results)
+                        }
                     }
 
                     override fun onFailure(call: Call?, e: IOException?) {
@@ -43,6 +49,5 @@ class MainActivity : AppCompatActivity() {
                 Result("パズル＆ドラゴンズ","https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/c3/97/35/c397356b-bf5f-cae6-724f-5dc638a17f6c/AppIcon-1x_U007emarketing-0-85-220-0-9.png/200x200bb.png")
         )
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = MainAdapter(results)
     }
 }
