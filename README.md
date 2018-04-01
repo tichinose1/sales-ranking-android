@@ -31,7 +31,6 @@
 - 作成したプロジェクトをコミットする
 
 ```bash
-cd ~/dev/kagin1/SalesRanking
 git init
 git add -A
 git commit -m "initial commit"
