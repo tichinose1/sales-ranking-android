@@ -1,4 +1,4 @@
-# 2018年04月android
+# sales-ranking-android
 
 ## アプリ概要
 
@@ -28,7 +28,7 @@
 ## Git（省略可）
 
 - プロジェクトディレクトリにリポジトリを作成し、バージョン管理を開始する
-- 作成したプロジェクトをコミットする
+- 作成したプロジェクトをコミットする
 
 ```bash
 cd ~/dev/kagin1/SalesRanking
@@ -43,7 +43,7 @@ git commit -m "initial commit"
 
 - [Tools]-[AVD Manager]
 - Created Virtual Device...
-- `Nexus`や`Pixel`を選択する
+- `Nexus`や`Pixel`を選択する
 
 ### 実行
 
@@ -95,14 +95,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 recyclerView.layoutManager = LinearLayoutManager(this)
 ```
 
-## セルの追加
+## セルの追加
 
 ### app/res/layout/row.xml
 
 - [File]-[New]-[XML]-[Layout XML File]
-- `row.xml`という名前で新規作成する
+- `row.xml`という名前で新規作成する
 - `ImageView`をドラッグ＆ドロップする
-- `TextView`をドラッグ＆ドロップする
+- `TextView`をドラッグ＆ドロップする
 - `layout_height`を`60dp`にする
 
 ```xml
@@ -210,7 +210,7 @@ data class Result(val name: String, val artworkUrl100: String)
 
 ## リストにデータを渡す
 
-### MainAdapter
+### MainAdapter
 
 ```kotlin
 class MainAdapter(private val results: Array<Result>): RecyclerView.Adapter<MainAdapter.MainHolder>() {
@@ -240,7 +240,7 @@ recyclerView.adapter = MainAdapter(results)
 - [Run]-[Debug 'app']
 - 渡したデータが表示されていることを確認する
 
-## 画像の非同期取得
+## 画像の非同期取得
 
 - OSSライブラリ`Glide`を使用してURLから非同期で画像を取得する
 - [bumptech/glide: An image loading and caching library for Android focused on smooth scrolling](https://github.com/bumptech/glide)
@@ -266,7 +266,7 @@ Result("パズル＆ドラゴンズ","https://is1-ssl.mzstatic.com/image/thumb/P
 ```kotlin
 import com.bumptech.glide.Glide
 
-...
+...
 
 Glide.with(holder.itemView).load(results[position].artworkUrl100).into(holder.itemView.imageView)
 ```
@@ -285,7 +285,7 @@ Glide.with(holder.itemView).load(results[position].artworkUrl100).into(holder.it
 ## RSS取得
 
 - OSSライブラリ`OkHttp`を使用してバックグラウンドでHTTP通信する
-- [square/okhttp: An HTTP+HTTP/2 client for Android and Java applications.](https://github.com/square/okhttp)
+- [square/okhttp: An HTTP+HTTP/2 client for Android and Java applications.](https://github.com/square/okhttp)
 
 ### app/build.gradle
 
@@ -379,7 +379,7 @@ Handler(Looper.getMainLooper()).post {
 ### 実行
 
 - [Run]-[Debug 'app']
-- RSSから取得したデータが画面に反映されていることを確認する
+- RSSから取得したデータが画面に反映されていることを確認する
 
 ## レイアウトを整える
 
