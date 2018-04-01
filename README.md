@@ -242,7 +242,7 @@ recyclerView.adapter = MainAdapter(results)
 ## 画像の非同期取得
 
 - OSSライブラリ`Glide`を使用してURLから非同期で画像を取得する
-- [bumptech/glide: An image loading and caching library for Android focused on smooth scrolling](https://github.com/bumptech/glide)
+- [bumptech/glide: An image loading and caching library for Android focused on smooth scrolling](https://github.com/bumptech/glide)
 
 ### app/build.gradle
 
